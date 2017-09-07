@@ -52,7 +52,7 @@ public:
         pchMessageStart[1] = 0x33;
         pchMessageStart[2] = 0x24;
         pchMessageStart[3] = 0x12;
-        vAlertPubKey = ParseHex("0419bce1bac0d543f104cbff2bd23680056a3b9ea05e1137d2ff90eeb5e08472eb500322593a2cb06fbf8297d7beb6cd30cb90f98153b5b7cce1493749e41e0284");
+        vAlertPubKey = ParseHex("1234bce1bac0d543f104cbff2bd23680056a3b9ea05e1137d2ff90eeb5e08472eb500322593a2cb06fbf8297d7beb6cd30cb90f98153b5b7cce1493749e41e0284");
         nDefaultPort = 18154;
         nRPCPort = 18155;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
@@ -76,8 +76,8 @@ public:
  
  
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256(""));
-        assert(genesis.hashMerkleRoot == uint256(""));
+        assert(hashGenesisBlock == uint256("0x"));
+        assert(genesis.hashMerkleRoot == uint256("0x"));
  
 	vSeeds.push_back(CDNSSeedData("statkynode.servep2p.com", "statkynode1.servep2p.com"));
  
@@ -103,6 +103,37 @@ protected:
     vector<CAddress> vFixedSeeds;
 };
 static CMainParams mainParams;
+
+if (true && block.GetHash() != hashGenesisBlock)
+        {
+            printf("Searching for genesis block...\n");
+            // This will figure out a valid hash and Nonce if you're
+            // creating a different genesis block:
+            uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+            uint256 thash;
+            char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
+ 
+            loop
+            {
+                scrypt_1024_1_1_256_sp(BEGIN(block.nVersion), BEGIN(thash), scratchpad);
+                if (thash <= hashTarget)
+                    break;
+                if ((block.nNonce & 0xFFF) == 0)
+                {
+                    printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+                }
+                ++block.nNonce;
+                if (block.nNonce == 0)
+                {
+                    printf("NONCE WRAPPED, incrementing time\n");
+                    ++block.nTime;
+                }
+            }
+            printf("block.nTime = %u \n", block.nTime);
+            printf("block.nNonce = %u \n", block.nNonce);
+            printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+           
+            }
  
  
 //
@@ -115,21 +146,21 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
-        pchMessageStart[0] = 0xcd;
-        pchMessageStart[1] = 0xf2;
+        pchMessageStart[0] = 0xd2;
+        pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xc0;
         pchMessageStart[3] = 0xef;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
-        vAlertPubKey = ParseHex("0471dc165db490094d35cde15b1f5d755fa6ad6f2b5ed0f340e3f17f57389c3c2af113a8cbcc885bde73305a553b5640c83021128008ddf882e856336269080496");
+        vAlertPubKey = ParseHex("1234dc165db490094d35cde15b1f5d755fa6ad6f2b5ed0f340e3f17f57389c3c2af113a8cbcc885bde73305a553b5640c83021128008ddf882e856336269080496");
         nDefaultPort = 25714;
         nRPCPort = 25715;
         strDataDir = "testnet";
  
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 216178;
+        genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
-        //assert(hashGenesisBlock == uint256("0x0000724595fb3b9609d441cbfb9577615c292abf07d996d3edabc48de843642d"));
+        assert(hashGenesisBlock == uint256("0x"));
  
         vFixedSeeds.clear();
         vSeeds.clear();
