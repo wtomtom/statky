@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=statky
+Comment=statky P2P Cryptocurrency
+Comment[fr]=statky, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=statky, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/statky-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/statky;
+Categories=Office;

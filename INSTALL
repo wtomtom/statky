@@ -1,0 +1,9 @@
+Building statky
+
+See doc/readme-qt.rst for instructions on building statky QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of statky.
+
+See doc/build-*.txt for instructions on building statkyd,
+the intended-for-services, no-graphical-interface, reference
+implementation of statky.
