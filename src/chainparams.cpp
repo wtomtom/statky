@@ -48,14 +48,14 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
-        pchMessageStart[0] = 0x50;
-        pchMessageStart[1] = 0x33;
-        pchMessageStart[2] = 0x24;
-        pchMessageStart[3] = 0x12;
+        pchMessageStart[0] = 0x95;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x26;
+        pchMessageStart[3] = 0x18;
         vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
         nDefaultPort = 18154;
         nRPCPort = 18155;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 25);
 
         const char* pszTimestamp = "My coin is better than bitcoin.";
         std::vector<CTxIn> vin;
@@ -72,8 +72,6 @@ public:
         genesis.nTime    = 1504832512;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce   = 560330;
- 
- 
  
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x8dde435510ad2a845ef1216c390432585917bd280ca951e89e290980dce397ca"));
@@ -118,7 +116,7 @@ public:
         pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xc0;
         pchMessageStart[3] = 0xef;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 25);
         vAlertPubKey = ParseHex("1234dc165db490094d35cde15b1f5d755fa6ad6f2b5ed0f340e3f17f57389c3c2af113a8cbcc885bde73305a553b5640c83021128008ddf882e856336269080496");
         nDefaultPort = 25714;
         nRPCPort = 25715;
@@ -158,7 +156,7 @@ public:
         pchMessageStart[1] = 0xbf;
         pchMessageStart[2] = 0xb5;
         pchMessageStart[3] = 0xda;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 25);
         genesis.nTime = 1411111111;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2;
