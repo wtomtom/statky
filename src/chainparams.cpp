@@ -160,7 +160,7 @@ public:
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x"));
+        // assert(hashGenesisBlock == uint256("0x"));
  
         vFixedSeeds.clear();
         vSeeds.clear();
