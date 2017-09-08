@@ -52,32 +52,32 @@ public:
         pchMessageStart[1] = 0x33;
         pchMessageStart[2] = 0x24;
         pchMessageStart[3] = 0x12;
-        vAlertPubKey = ParseHex("1234bce1bac0d543f104cbff2bd23680056a3b9ea05e1137d2ff90eeb5e08472eb500322593a2cb06fbf8297d7beb6cd30cb90f98153b5b7cce1493749e41e0284");
+        vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
         nDefaultPort = 18154;
         nRPCPort = 18155;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
-        const char* pszTimestamp = "nova coin statkycoin";
+        const char* pszTimestamp = "My coin is better than bitcoin.";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1504740738, vin, vout, 0);
+        CTransaction txNew(1, 1504832512, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1504740738;
+        genesis.nTime    = 1504832512;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 0;
+        genesis.nNonce   = 560330;
  
  
  
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x"));
-        assert(genesis.hashMerkleRoot == uint256("0x"));
+        assert(hashGenesisBlock == uint256("0x8dde435510ad2a845ef1216c390432585917bd280ca951e89e290980dce397ca"));
+        assert(genesis.hashMerkleRoot == uint256("0x296a0263fd6a2601a93233bade0296e72cb4efa58a8b543da927b4a2b698ff9f"));
  
 	vSeeds.push_back(CDNSSeedData("statkynode.servep2p.com", "statkynode1.servep2p.com"));
  
